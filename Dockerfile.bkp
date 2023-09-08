@@ -1,0 +1,11 @@
+FROM ubuntu:latest AS builder
+RUN apt-get update && \
+    apt-get install -y build-essential cmake
+WORKDIR /app
+COPY . .
+RUN mkdir build && cd build && cmake .. && make -j
+
+FROM ubuntu:latest
+WORKDIR /app
+COPY --from=builder /app/build/study /app/study
+ENTRYPOINT [ "/app/study" ]
