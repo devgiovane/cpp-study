@@ -1,8 +1,8 @@
-#include "Product.h"
+#include "ProductService.hpp"
 
 int main() {
-    Product beer = Product("beer", 3.90);
-    beer.enable();
-    beer.print();
+    ProductPersistence persistence = ProductPersistence();
+    auto service = ProductService(&persistence);
+    service.create("beer", 3.9);
     return 0;
 }

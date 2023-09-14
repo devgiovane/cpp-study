@@ -1,9 +1,9 @@
-#include "Product.h"
+#include "Product.hpp"
 
 Product::Product(std::string name, float price) {
     boost::uuids::random_generator generator;
     this->uid = generator();
-    this->name = name;
+    this->name = std::move(name);
     this->price = price;
     this->status = Status::Disabled;
 }

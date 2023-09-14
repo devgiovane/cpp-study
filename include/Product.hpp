@@ -1,9 +1,11 @@
-#ifndef STUDY_PRODUCT_H
-#define STUDY_PRODUCT_H
+#ifndef STUDY_PRODUCT_HPP
+#define STUDY_PRODUCT_HPP
 
 #include <string>
 #include <cstdint>
+#include <utility>
 #include <iostream>
+
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -12,7 +14,7 @@ enum Status { Enabled = 1, Disabled };
 
 class Product {
 private:
-    boost::uuids::uuid uid;
+    boost::uuids::uuid uid{};
     std::string name;
     float price;
     Status status;
@@ -28,4 +30,4 @@ public:
     void print();
 };
 
-#endif //STUDY_PRODUCT_H
+#endif //STUDY_PRODUCT_HPP

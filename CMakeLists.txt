@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.22)
-set(STUDY_PROJECT_NAME study)
-
-project(${STUDY_PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(STUDY_PROJECT_NAME study)
+project(${STUDY_PROJECT_NAME})
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 find_package(Boost REQUIRED COMPONENTS system)
 
 add_executable(${STUDY_PROJECT_NAME} src/main.cpp
         src/Product.cpp
-        src/Product.h
+        include/Product.hpp
+        src/ProductPersistence.cpp
+        include/ProductPersistence.hpp
+        src/ProductService.cpp
+        include/ProductService.hpp
 )
-
 target_link_libraries(${STUDY_PROJECT_NAME} PRIVATE Boost::system)
+
