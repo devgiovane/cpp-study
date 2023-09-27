@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-RUN apk update && apk add build-base boost-dev cmake
+RUN apk update && apk add build-base cmake
 WORKDIR /app
 COPY . .
 RUN mkdir build && cd build && cmake .. && make -j

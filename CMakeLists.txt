@@ -4,10 +4,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(STUDY_PROJECT_NAME study)
-project(${STUDY_PROJECT_NAME})
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-find_package(Boost REQUIRED COMPONENTS system)
+project(${STUDY_PROJECT_NAME})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_executable(${STUDY_PROJECT_NAME} src/main.cpp
         src/Product.cpp
@@ -17,5 +16,3 @@ add_executable(${STUDY_PROJECT_NAME} src/main.cpp
         src/ProductService.cpp
         include/ProductService.hpp
 )
-target_link_libraries(${STUDY_PROJECT_NAME} PRIVATE Boost::system)
-

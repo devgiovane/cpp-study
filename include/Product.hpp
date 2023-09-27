@@ -5,23 +5,21 @@
 #include <cstdint>
 #include <utility>
 #include <iostream>
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
+#include <uuid/uuid.h>
 
 enum Status { Enabled = 1, Disabled };
 
 class Product {
 private:
-    boost::uuids::uuid uid{};
+    std::string uid;
     std::string name;
     float price;
     Status status;
+    static std::string generateUuid();
 
 public:
     Product(std::string name, float price);
-    boost::uuids::uuid getUid();
+    std::string getUid();
     std::string getName();
     float getPrice();
     Status getStatus();

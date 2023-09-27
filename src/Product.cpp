@@ -1,14 +1,21 @@
 #include "Product.hpp"
 
 Product::Product(std::string name, float price) {
-    boost::uuids::random_generator generator;
-    this->uid = generator();
+    this->uid = Product::generateUuid();
     this->name = std::move(name);
     this->price = price;
     this->status = Status::Disabled;
 }
 
-boost::uuids::uuid Product::getUid() {
+std::string Product::generateUuid() {
+    uuid_t uuid;
+    uuid_generate(uuid);
+    char uuid_str[37];
+    uuid_unparse_lower(uuid, uuid_str);
+    return uuid_str;
+}
+
+std::string Product::getUid() {
     return this->uid;
 }
 
@@ -25,12 +32,12 @@ Status Product::getStatus() {
 }
 
 void Product::enable() {
-    if (this->price <= 0) return;
+    if (this->price <= 0) throw std::invalid_argument("price need be than zero");
     this->status = Status::Enabled;
 }
 
 void Product::disable() {
-    if (this->price != 0) return;
+    if (this->price != 0) throw std::invalid_argument("price is invalid");
     this->status = Status::Disabled;
 }
 
