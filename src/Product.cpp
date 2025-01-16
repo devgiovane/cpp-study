@@ -1,3 +1,4 @@
+#include <uuid/uuid.h>
 #include "Product.hpp"
 
 Product::Product(std::string name, float price) {

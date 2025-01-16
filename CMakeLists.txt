@@ -4,15 +4,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(STUDY_PROJECT_NAME study)
+file(GLOB_RECURSE HEADERS include/*.hpp)
+file(GLOB_RECURSE SOURCES src/*.cpp)
 
 project(${STUDY_PROJECT_NAME})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_executable(${STUDY_PROJECT_NAME} src/main.cpp
-        src/Product.cpp
-        include/Product.hpp
-        src/ProductPersistence.cpp
-        include/ProductPersistence.hpp
-        src/ProductService.cpp
-        include/ProductService.hpp
-)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+target_link_libraries(${STUDY_PROJECT_NAME} PRIVATE uuid)
+find_package(jsoncpp REQUIRED)
+target_link_libraries(${STUDY_PROJECT_NAME} PRIVATE jsoncpp_lib)

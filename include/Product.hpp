@@ -2,10 +2,7 @@
 #define STUDY_PRODUCT_HPP
 
 #include <string>
-#include <cstdint>
-#include <utility>
 #include <iostream>
-#include <uuid/uuid.h>
 
 enum Status { Enabled = 1, Disabled };
 

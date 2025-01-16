@@ -5,6 +5,7 @@ ProductService::ProductService(ProductPersistence *persistence) {
 }
 
 void ProductService::create(std::string name, float price) {
-    Product product = Product(std::move(name), price);
+    auto product = Product(std::move(name), price);
+    product.enable();
     this->persistence->save(product);
 }

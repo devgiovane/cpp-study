@@ -1,11 +1,8 @@
-FROM alpine:latest AS builder
-RUN apk update && apk add build-base cmake
-WORKDIR /app
-COPY . .
-RUN mkdir build && cd build && cmake .. && make -j
-
-FROM alpine:latest
-RUN apk update && apk add libstdc++
-WORKDIR /app
-COPY --from=builder /app/build/study /app/study
-ENTRYPOINT [ "/app/study" ]
+FROM ubuntu:24.04
+LABEL maintaner="giovanesantos1999@gmail.com"
+RUN apt update && apt install -y  \
+    gcc g++ cmake make  \
+    libjsoncpp-dev uuid-dev \
+    zlib1g-dev \
+    openssl libssl-dev
+RUN apt clean
