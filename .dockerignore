@@ -1,4 +1,7 @@
 .git/
 Dockerfile
-Dockerfile.bkp
+.local/Dockerfile
+
 cmake-build-debug/
+cmake-build-relase/
+cmake-build-debug-docker/
